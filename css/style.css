@@ -110,7 +110,7 @@ nav a:hover {
 
 .portfolio-content {
   flex: 1;
-  max-width: 15%;
+  max-width: 17%;
   border-right: 7px solid #465978;
   padding-right: 10px;
 }
@@ -137,6 +137,23 @@ nav a:hover {
   margin-bottom: 15px;
 }
 
+.contact {
+  max-width: 100%;
+  color: #222;
+  font-size: 14px;
+  line-height: 24px;
+  text-align: justify;
+ 
+  float: right;
+  justify-content:center !important;
+}
+
+.contact p {
+
+  line-height: 24px;
+  letter-spacing: 1px;
+  margin-bottom: 15px;
+}
 .featuredProduct {
   background-color: #f0f0f0;
   display: flex;
