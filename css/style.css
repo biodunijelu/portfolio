@@ -1,0 +1,182 @@
+/* Reset some default styles and provide a basic styling */
+body, h1, h2, p {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+/* Apply a basic styling to header */
+header {
+  background-color: #31343D;
+  color: #fff;
+  text-align: center;
+  padding: 10px 0;
+  display: flex;
+  justify-content: space-between;
+ 
+}
+header h1 {
+  font-size: 350%;
+  background-color: #92CCCD;
+  color: #333;
+  padding-left: 5%;
+  padding-right: 1%;
+}
+
+
+/* Style the navigation */
+nav {
+  /* display: flex; */
+  justify-content: center;
+  min-width: 300px;
+  margin-top: 1%;
+  padding-right: 10%;
+  padding-left: 10%;
+
+}
+
+
+nav a {
+  margin: 0 15px;
+  color: #92CCCD;
+  font-weight: bold;
+  text-decoration: none;
+  padding-bottom: 1%; 
+  border-bottom: 3px solid;
+  font-size: 130%;
+  letter-spacing: 1px;
+  
+}
+
+nav a:hover {
+  color: #fff;
+}
+/* Style the hero banner */
+.hero-banner {
+  background-image: url('../images/02-hero-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+  text-align: center;
+  width: 100%;
+  height: 300px;
+  /* padding: 100px 0; */
+  display: flex;
+  justify-content: flex-end; /* Align items to the right */
+  align-items: center; /* Center items vertically */
+}
+
+/* Add a blue color overlay using ::before pseudo-element */
+.hero-banner::before {
+  content: '';
+  position: absolute;
+  top: 10;
+  left: 0;
+  width: 100%;
+  height: 300px;
+  background-color: rgba(26, 54, 90, 0.7); /* Blue color with 50% opacity */
+  z-index: 1; /* Place the overlay above the background image */
+}
+.hero-banner h2 {
+  font-size: 200%;
+  background-color: #92CCCD;
+  padding: 10px; 
+  color: #333;
+  margin-right: 150px;
+  /*  position: absolute; */
+  position: relative;
+  z-index: 2;
+}
+
+
+/* Style the main page wrapper */
+.page-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+.Portfolio-container {
+  display: flex;
+  justify-content: space-between; 
+  /* align-items: center; */
+ 
+}
+
+.Portfolio-content {
+  flex: 1; /* Take up remaining space */
+  max-width: 15%; 
+  border-right: 7px solid #465978;
+  padding-right: 10px;
+}
+
+.Portfolio-content h2{
+  color: #465978;
+  font-size: 350%;
+  text-align: right;
+
+}
+
+
+.heading, .featuredProduct{
+  max-width: 80%; 
+  color: #222;
+  font-size: 14px;
+  line-height: 24px;
+  text-align: justify;
+
+}
+
+
+
+.heading p{
+  line-height: 24px;
+  letter-spacing: 1px;
+  margin-bottom: 15px;
+}
+.featuredProduct{
+  background-color: #f0f0f0;
+ 
+  border: 5px solid #92CCCD;
+
+}
+
+/* Style the individual page sections */
+.page-section {
+  /* margin-bottom: 40px; */
+  padding: 50px 0 !important;
+}
+
+#about{
+position:relative;
+min-height:1px;
+padding-right:15px;
+padding-left:15px;
+
+}
+@media screen and (max-width: 991px) {
+  .padding-md {
+    padding: 30px 0 !important;
+  }
+}
+/* Media query for responsiveness */
+@media screen and (max-width: 768px) {
+  /* Adjust styles for smaller screens */
+
+  /* Center-align the header navigation links */
+  nav {
+    justify-content: center;
+  }
+
+  /* Adjust padding for hero banner */
+  .hero-banner {
+    padding: 80px 0;
+  }
+
+  /* Adjust padding for the main page wrapper */
+  .page-wrapper {
+    padding: 10px;
+  }
+}
