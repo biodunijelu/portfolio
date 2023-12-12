@@ -1,14 +1,19 @@
-/* Reset some default styles and provide a basic styling */
+:root {
+  --main-font: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  --main-color: #333;
+  --highlight-color: #92CCCD;
+  --overlay-color: rgba(26, 54, 90, 0.7);
+}
+
 body, h1, h2, p {
   margin: 0;
   padding: 0;
 }
 
 body {
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-family: var(--main-font);
 }
 
-/* Apply a basic styling to header */
 header {
   background-color: #31343D;
   color: #fff;
@@ -17,53 +22,43 @@ header {
   display: flex;
   justify-content: space-between;
   position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 999;
-   
-    -webkit-animation: sticky 1.2s;
-    animation: sticky 1.2s;
-    -webkit-box-shadow: 0px 10px 30px 0px rgb(110 104 162 / 10%);
-    box-shadow: 
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  animation: sticky 1.2s;
+  box-shadow: 0px 10px 30px 0px rgb(110 104 162 / 10%);
 }
+
 header h1 {
   font-size: 350%;
-  background-color: #92CCCD;
+  background-color: var(--highlight-color);
   color: #333;
-  padding-left: 5%;
-  padding-right: 1%;
+  padding: 0 1%;
 }
 
-
-/* Style the navigation */
 nav {
-  /* display: flex; */
   justify-content: center;
   min-width: 300px;
   margin-top: 1%;
-  padding-right: 10%;
-  padding-left: 10%;
-
+  padding: 0 10%;
 }
-
 
 nav a {
   margin: 0 15px;
-  color: #92CCCD;
+  color: var(--highlight-color);
   font-weight: bold;
   text-decoration: none;
-  padding-bottom: 1%; 
+  padding-bottom: 1%;
   border-bottom: 3px solid;
   font-size: 130%;
   letter-spacing: 1px;
-  
 }
 
 nav a:hover {
   color: #fff;
 }
-/* Style the hero banner */
+
 .hero-banner {
   background-image: url('../images/02-hero-bg.jpg');
   background-size: cover;
@@ -72,120 +67,230 @@ nav a:hover {
   text-align: center;
   width: 100%;
   height: 300px;
-  /* padding: 100px 0; */
   display: flex;
-  justify-content: flex-end; /* Align items to the right */
-  align-items: center; /* Center items vertically */
+  justify-content: flex-end;
+  align-items: center;
+  position: relative;
 }
 
-/* Add a blue color overlay using ::before pseudo-element */
 .hero-banner::before {
   content: '';
   position: absolute;
-  top: 10;
+  top: 0;
   left: 0;
   width: 100%;
-  height: 300px;
-  background-color: rgba(26, 54, 90, 0.7); /* Blue color with 50% opacity */
-  z-index: 1; /* Place the overlay above the background image */
+  height: 100%;
+  background-color: var(--overlay-color);
+  z-index: 1;
 }
+
 .hero-banner h2 {
   font-size: 200%;
-  background-color: #92CCCD;
-  padding: 10px; 
+  background-color: var(--highlight-color);
+  padding: 10px;
   color: #333;
   margin-right: 150px;
-  /*  position: absolute; */
   position: relative;
   z-index: 2;
 }
 
 
-/* Style the main page wrapper */
+
 .page-wrapper {
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
 }
-.Portfolio-container {
+
+.portfolio-container {
   display: flex;
-  justify-content: space-between; 
-  /* align-items: center; */
- 
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
-.Portfolio-content {
-  flex: 1; /* Take up remaining space */
-  max-width: 15%; 
+.portfolio-content {
+  flex: 1;
+  max-width: 15%;
   border-right: 7px solid #465978;
   padding-right: 10px;
 }
 
-.Portfolio-content h2{
+.portfolio-content h2 {
   color: #465978;
   font-size: 350%;
   text-align: right;
-
+ 
 }
 
-
-.heading, .featuredProduct{
-  max-width: 80%; 
+.heading,
+.featured-and-boxes-container {
+  max-width: 80%;
   color: #222;
   font-size: 14px;
   line-height: 24px;
   text-align: justify;
-
 }
 
-
-
-.heading p{
+.heading p {
   line-height: 24px;
   letter-spacing: 1px;
   margin-bottom: 15px;
 }
-.featuredProduct{
+
+.featuredProduct {
   background-color: #f0f0f0;
+  display: flex;
+  border: 5px solid var(--highlight-color);
+}
+
+/* CSS for Featured Product and Boxes */
+.featured-and-boxes-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.featured-product {
+  width: 100%;
+  background-color: #f0f0f0;
+  border: 5px solid var(--highlight-color);
+  margin-bottom: 20px;
+  overflow: hidden;
+  position: relative;
+
+  
+}
+
+.featured-product img {
+  width: 100%;
+  height: auto;
+  transition: transform 0.3s ease;
+}
+
+.featured-product::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(0, 128, 0, 0.8), rgba(0, 128, 0, 0.2)); /* Green gradient overlay */
+  opacity: 0; /* Initially hidden */
+  transition: opacity 0.3s ease; /* Add a smooth transition effect on hover */
+}
+
+.featured-product:hover::before {
+  opacity: 100; /* Show the overlay on hover */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 2, 72, 0.5);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition: all .3s;
+  -o-transition: all .3s;
+  transition: all .3s;
+}
+
+.featured-product:hover img {
+  transform: scale(1.05); 
+  /* Add a slight scale effect on hover */
+}
+.featured-product h2{
+  font-size: 200%;
+  background-color: var(--highlight-color);
+  padding: 10px;
+  color: #333;
+  position: absolute;
+  bottom: 10px;
+  left: 7%;
+  transform: translateX(-50%);
+  margin: 0; 
+}
+
+.boxes-container {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.portfolio-work {
+  flex: 1;
+  width: calc(50% - 10px);
+  position: relative;
+  border: 3px solid var(--highlight-color);
  
-  border: 5px solid #92CCCD;
+}
+.portfolio-work img {
+  width: 100%;
+  height: auto;
+  transition: transform 0.3s ease;
+  
+}
+.portfolio-work h2{
+  font-size: 200%;
+  background-color: var(--highlight-color);
+  padding: 10px;
+  color: #333;
+  position: absolute;
+  bottom: 0px;
+  left: 12%;
+  transform: translateX(-50%);
+  margin: 0; 
 
 }
-
-/* Style the individual page sections */
+.box1{
+  margin-right: 15px;
+}
 .page-section {
-  /* margin-bottom: 40px; */
-  padding: 50px 0 !important;
+  padding: 20px 0 !important;
 }
 
-#about{
-position:relative;
-min-height:1px;
-padding-right:15px;
-padding-left:15px;
-
+#about,
+#work {
+  position: relative;
+  min-height: 1px;
+  padding-right: 15px;
+  padding-left: 15px;
 }
+/* Media Queries */
 @media screen and (max-width: 991px) {
   .padding-md {
     padding: 30px 0 !important;
   }
 }
-/* Media query for responsiveness */
-@media screen and (max-width: 768px) {
-  /* Adjust styles for smaller screens */
 
-  /* Center-align the header navigation links */
+@media screen and (max-width: 768px) {
   nav {
     justify-content: center;
   }
 
-  /* Adjust padding for hero banner */
   .hero-banner {
     padding: 80px 0;
   }
 
-  /* Adjust padding for the main page wrapper */
   .page-wrapper {
     padding: 10px;
   }
+ .featured-product {
+    flex-direction: column;
+  }
+
+  .box {
+    width: 100%;
+    margin: 10px 0;
+  }
 }
+
